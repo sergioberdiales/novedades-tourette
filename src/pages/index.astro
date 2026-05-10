@@ -1,0 +1,128 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const categories = [
+  "Todos",
+  "Investigación",
+  "Tratamientos",
+  "Familias",
+  "Educación",
+  "Asociaciones",
+  "Eventos",
+  "Divulgación",
+];
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+---
+
+<BaseLayout>
+  <header class="site-hero">
+    <nav class="topbar" aria-label="Navegación principal">
+      <a class="brand" href={import.meta.env.BASE_URL}>Novedades Tourette</a>
+      <a class="nav-link" href="https://touretteasturias.org/">APASTTA</a>
+    </nav>
+    <div class="hero-inner">
+      <p class="eyebrow">Boletín personal sobre Tourette y trastornos asociados</p>
+      <h1>Novedades Tourette</h1>
+      <p class="hero-copy">
+        Prototipo personal para recopilar novedades fiables sobre investigación,
+        tratamientos, recursos para familias, educación, asociaciones, eventos y
+        divulgación relacionada con el Síndrome de Tourette.
+      </p>
+      <p class="medical-note" role="note">
+        Esta página tiene fines informativos y no sustituye la valoración de
+        profesionales sanitarios.
+      </p>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="intro-section" aria-labelledby="ultimas-novedades">
+      <div class="section-heading">
+        <p class="eyebrow">Primera versión</p>
+        <h2 id="ultimas-novedades">Últimas fichas</h2>
+        <p>
+          Cada ficha resume una novedad ficticia pero realista y deja visible su
+          fuente simulada para facilitar una lectura prudente y trazable.
+        </p>
+      </div>
+
+      <form class="filters" role="search" aria-label="Filtrar novedades">
+        <div class="search-field">
+          <label for="search">Buscar por texto</label>
+          <input id="search" name="search" type="search" placeholder="Ej. escuela, terapia, genética..." />
+        </div>
+        <fieldset>
+          <legend>Categoría</legend>
+          <div class="category-list" data-category-filters>
+            {
+              categories.map((category) => (
+                <button
+                  class="filter-button"
+                  type="button"
+                  data-category={category}
+                  aria-pressed={category === "Todos" ? "true" : "false"}
+                >
+                  {category}
+                </button>
+              ))
+            }
+          </div>
+        </fieldset>
+      </form>
+
+      <p class="results-count" data-results-count>{posts.length} novedades disponibles</p>
+
+      <div class="post-grid" data-post-list>
+        {
+          posts.map((post) => (
+            <article
+              class="post-card"
+              data-post-card
+              data-category={post.data.category}
+              data-search={`${post.data.title} ${post.data.summary} ${post.data.tags.join(" ")}`.toLowerCase()}
+            >
+              <div class="card-meta">
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                <span>{post.data.category}</span>
+              </div>
+              <h3>
+                <a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.excerpt}</p>
+              <div class="tag-list" aria-label="Etiquetas">
+                {post.data.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+              <p class="source">Fuente original: {post.data.source}</p>
+              <a class="read-more" href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>
+                Ver ficha completa
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      <p class="empty-state" data-empty-state hidden>
+        No hay fichas que coincidan con esos filtros.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Proyecto personal inspirado por el trabajo asociativo de APASTTA. Contenido
+      de ejemplo para validación inicial.
+    </p>
+  </footer>
+
+  <script is:inline src="/novedades-tourette/filters.js"></script>
+</BaseLayout>
