@@ -17,10 +17,14 @@ const posts = defineCollection({
     tags: z.array(z.string()),
     excerpt: z.string(),
     source: z.string(),
+    sourceType: z.string(),
+    evidenceLevel: z.string(),
     originalUrl: z.string().url(),
     originalLanguage: z.string(),
+    checkedDate: z.coerce.date(),
     summary: z.string(),
     relevance: z.string(),
+    caution: z.string(),
   }),
 });
 

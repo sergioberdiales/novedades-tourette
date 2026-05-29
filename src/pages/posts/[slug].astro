@@ -49,12 +49,24 @@ const formatDate = (date: Date) =>
           <dd>{post.data.source}</dd>
         </div>
         <div>
+          <dt>Tipo de fuente</dt>
+          <dd>{post.data.sourceType}</dd>
+        </div>
+        <div>
+          <dt>Nivel de lectura</dt>
+          <dd>{post.data.evidenceLevel}</dd>
+        </div>
+        <div>
           <dt>Enlace original</dt>
           <dd><a href={post.data.originalUrl}>{post.data.originalUrl}</a></dd>
         </div>
         <div>
           <dt>Idioma original</dt>
           <dd>{post.data.originalLanguage}</dd>
+        </div>
+        <div>
+          <dt>Fecha de revisión</dt>
+          <dd><time datetime={post.data.checkedDate.toISOString()}>{formatDate(post.data.checkedDate)}</time></dd>
         </div>
         <div>
           <dt>Etiquetas</dt>
@@ -74,9 +86,7 @@ const formatDate = (date: Date) =>
       </section>
 
       <p class="medical-note" role="note">
-        Prudencia médica: esta ficha resume información divulgativa y no debe
-        interpretarse como diagnóstico, recomendación terapéutica ni sustituto de
-        una consulta con profesionales sanitarios.
+        Prudencia médica: {post.data.caution}
       </p>
 
       <section class="share-panel" aria-labelledby="share-title">

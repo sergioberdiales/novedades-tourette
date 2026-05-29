@@ -53,10 +53,14 @@ category: "Investigación"
 tags: ["tics", "familias"]
 excerpt: "Entradilla breve para la tarjeta."
 source: "Nombre de la fuente"
+sourceType: "Tipo de fuente"
+evidenceLevel: "Lectura divulgativa / estudio observacional / ensayo clínico..."
 originalUrl: "https://example.org/fuente-original"
 originalLanguage: "Español"
+checkedDate: 2026-05-29
 summary: "Resumen en español de la novedad."
 relevance: "Por qué puede ser relevante para familias, personas afectadas o profesionales."
+caution: "Aviso de prudencia médica específico para esta ficha."
 ---
 
 Texto adicional de la ficha si hace falta.
@@ -82,7 +86,7 @@ git init
 git add .
 git commit -m "Crear prototipo inicial"
 git branch -M main
-git remote add origin https://github.com/TU_USUARIO/novedades-tourette.git
+git remote add origin https://github.com/sergioberdiales/novedades-tourette.git
 git push -u origin main
 ```
 
@@ -102,7 +106,7 @@ Esta primera fase no incluye automatización editorial ni generación de conteni
 ## Roadmap futuro
 
 - Revisar el prototipo con socios, familias y profesionales.
-- Sustituir las fichas ficticias por contenidos reales verificados.
+- Ampliar el catálogo de contenidos reales verificados.
 - Añadir criterios editoriales: fuentes aceptadas, fecha de revisión, responsable de revisión y nivel de evidencia.
 - Crear una automatización semanal con GitHub Actions para recopilar candidatas desde fuentes predefinidas.
 - Incorporar una fase asistida por LLM para proponer resúmenes en español, siempre con revisión humana antes de publicar.
