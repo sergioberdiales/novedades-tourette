@@ -7,6 +7,7 @@ const posts = (await getCollection("posts")).sort(
 );
 
 const featured = posts[0];
+const latestPosts = posts.slice(1);
 
 const categories = [
   "Todos",
@@ -117,8 +118,46 @@ const formatDate = (date: Date) =>
     <section id="fichas" class="news-section" aria-labelledby="ultimas-novedades">
       <div class="section-row">
         <h2 id="ultimas-novedades">Últimas novedades</h2>
-        <p data-results-count>{posts.length} fichas</p>
+        <p data-results-count>{latestPosts.length} fichas</p>
       </div>
+
+      <div class="post-grid" data-post-list>
+        {
+          latestPosts.map((post) => (
+            <article
+              class="post-card"
+              data-post-card
+              data-category={post.data.category}
+              data-audiences={post.data.audience.join("|")}
+              data-search={`${post.data.title} ${post.data.excerpt} ${post.data.summary} ${post.data.source} ${post.data.sourceType} ${post.data.audience.join(" ")} ${post.data.tags.join(" ")}`.toLowerCase()}
+            >
+              <div class="card-meta">
+                <span class="category-dot"><span aria-hidden="true"></span>{post.data.category}</span>
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              </div>
+              <h3>
+                <a href={`${base}posts/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.excerpt}</p>
+              <div class="tag-list" aria-label="Etiquetas">
+                {post.data.tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
+              </div>
+              <div class="card-divider"></div>
+              <div class="card-source">
+                <span>{post.data.sourceType}</span>
+                <strong>{post.data.source}</strong>
+              </div>
+              <div class="card-actions">
+                <a class="read-more" href={`${base}posts/${post.slug}/`}>Leer ficha completa →</a>
+                <a class="source-link" href={post.data.originalUrl} rel="noreferrer">Fuente ↗</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="empty-state" data-empty-state hidden>
+        No hay fichas que coincidan con esos filtros.
+      </p>
 
       <form class="filters" role="search" aria-label="Filtrar novedades">
         <div class="filter-field filter-field-wide">
@@ -155,44 +194,6 @@ const formatDate = (date: Date) =>
           </div>
         </fieldset>
       </form>
-
-      <div class="post-grid" data-post-list>
-        {
-          posts.map((post) => (
-            <article
-              class="post-card"
-              data-post-card
-              data-category={post.data.category}
-              data-audiences={post.data.audience.join("|")}
-              data-search={`${post.data.title} ${post.data.excerpt} ${post.data.summary} ${post.data.source} ${post.data.sourceType} ${post.data.audience.join(" ")} ${post.data.tags.join(" ")}`.toLowerCase()}
-            >
-              <div class="card-meta">
-                <span class="category-dot"><span aria-hidden="true"></span>{post.data.category}</span>
-                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-              </div>
-              <h3>
-                <a href={`${base}posts/${post.slug}/`}>{post.data.title}</a>
-              </h3>
-              <p>{post.data.excerpt}</p>
-              <div class="tag-list" aria-label="Etiquetas">
-                {post.data.tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
-              </div>
-              <div class="card-divider"></div>
-              <div class="card-source">
-                <span>{post.data.sourceType}</span>
-                <strong>{post.data.source}</strong>
-              </div>
-              <div class="card-actions">
-                <a class="read-more" href={`${base}posts/${post.slug}/`}>Leer ficha completa →</a>
-                <a class="source-link" href={post.data.originalUrl} rel="noreferrer">Fuente ↗</a>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-      <p class="empty-state" data-empty-state hidden>
-        No hay fichas que coincidan con esos filtros.
-      </p>
     </section>
 
     <section id="fuentes" class="method-section" aria-labelledby="metodo">
