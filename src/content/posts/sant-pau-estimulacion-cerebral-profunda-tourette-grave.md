@@ -2,6 +2,7 @@
 title: "Sant Pau comunica un caso grave de Tourette tratado con estimulación cerebral profunda"
 date: 2026-04-22
 category: "Tratamientos"
+audience: ["Familias", "Personas con Tourette", "Profesionales"]
 tags: ["estimulación cerebral profunda", "Sant Pau", "caso grave", "neuromodulación", "alta complejidad"]
 excerpt: "El Hospital de Sant Pau informó de la evolución favorable de un caso extremadamente grave tratado con estimulación cerebral profunda en uso compasivo."
 source: "Hospital de Sant Pau"

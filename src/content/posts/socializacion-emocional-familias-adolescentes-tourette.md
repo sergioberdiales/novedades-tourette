@@ -2,6 +2,7 @@
 title: "Apoyo emocional familiar y síntomas psicológicos en adolescentes con Tourette"
 date: 2026-02-03
 category: "Familias"
+audience: ["Familias", "Profesionales", "Docentes"]
 tags: ["adolescencia", "familias", "emociones", "salud mental", "apoyo parental"]
 excerpt: "Un estudio exploró cómo las respuestas parentales a las emociones se relacionan con síntomas psicológicos en adolescentes con Tourette."
 source: "Research on Child and Adolescent Psychopathology / PubMed"

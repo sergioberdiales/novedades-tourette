@@ -2,6 +2,7 @@
 title: "Una revisión resume qué se sabe sobre las conductas tipo tic funcionales"
 date: 2026-02-18
 category: "Investigación"
+audience: ["Profesionales", "Familias", "Docentes"]
 tags: ["conductas tipo tic funcionales", "diagnóstico diferencial", "ansiedad", "tratamiento cognitivo", "pediatría"]
 excerpt: "Una revisión en Pediatric Neurology analiza características, seguimiento y tratamiento de las conductas tipo tic funcionales."
 source: "Pediatric Neurology / PubMed"

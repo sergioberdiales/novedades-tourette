@@ -50,6 +50,7 @@ src/content/posts/nombre-de-la-ficha.md
 title: "Título de la novedad"
 date: 2026-05-10
 category: "Investigación"
+audience: ["Familias", "Profesionales"]
 tags: ["tics", "familias"]
 excerpt: "Entradilla breve para la tarjeta."
 source: "Nombre de la fuente"
@@ -75,6 +76,13 @@ Categorías válidas:
 - `Asociaciones`
 - `Eventos`
 - `Divulgación`
+
+Públicos usados en los filtros:
+
+- `Familias`
+- `Personas con Tourette`
+- `Profesionales`
+- `Docentes`
 
 ## Publicar en GitHub Pages
 

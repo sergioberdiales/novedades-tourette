@@ -2,6 +2,7 @@
 title: "Comorbilidades y calidad de vida en adultos con Tourette"
 date: 2026-01-10
 category: "Investigación"
+audience: ["Personas con Tourette", "Profesionales", "Familias"]
 tags: ["adultos", "calidad de vida", "depresión", "TDAH", "comorbilidad"]
 excerpt: "Un estudio con registros clínicos de adultos relaciona síntomas psiquiátricos, severidad de tics y calidad de vida."
 source: "Movement Disorders Clinical Practice / PubMed"

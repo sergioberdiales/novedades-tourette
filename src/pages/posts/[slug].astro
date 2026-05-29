@@ -12,8 +12,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const base = import.meta.env.BASE_URL;
 const canonicalPath = `${import.meta.env.BASE_URL}posts/${post.slug}/`;
-const shareUrl = `${Astro.site ?? ""}${canonicalPath}`;
+const shareUrl = Astro.site ? new URL(canonicalPath, Astro.site).toString() : canonicalPath;
 const shareText = encodeURIComponent(post.data.title);
 const encodedUrl = encodeURIComponent(shareUrl);
 const formatDate = (date: Date) =>
@@ -25,16 +26,29 @@ const formatDate = (date: Date) =>
 ---
 
 <BaseLayout title={`${post.data.title} | Novedades Tourette`} description={post.data.excerpt}>
-  <header class="compact-header">
-    <nav class="topbar" aria-label="Navegación principal">
-      <a class="brand" href={import.meta.env.BASE_URL}>Novedades Tourette</a>
-      <a class="nav-link" href={`${import.meta.env.BASE_URL}`}>Todas las fichas</a>
+  <header class="site-header">
+    <a class="brand-lockup" href={base} aria-label="Novedades Tourette, inicio">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>
+        <strong>Novedades Tourette</strong>
+        <small>Boletín informativo</small>
+      </span>
+    </a>
+    <nav class="nav-menu" aria-label="Navegación principal">
+      <a href={base}>Inicio</a>
+      <a href={`${base}#fichas`}>Fichas</a>
+      <a href={`${base}#fuentes`}>Fuentes</a>
+      <a href={`${base}#proyecto`}>Sobre el proyecto</a>
     </nav>
+    <a class="context-link" href="https://touretteasturias.org/">
+      <span aria-hidden="true"></span>
+      En el entorno de APASTTA
+    </a>
   </header>
 
   <main id="contenido" class="post-page">
     <article class="post-detail">
-      <a class="back-link" href={import.meta.env.BASE_URL}>Volver al listado</a>
+      <a class="back-link" href={`${base}#fichas`}>Volver al listado</a>
       <p class="eyebrow">{post.data.category}</p>
       <h1>{post.data.title}</h1>
       <p class="lead">{post.data.excerpt}</p>
@@ -63,6 +77,10 @@ const formatDate = (date: Date) =>
         <div>
           <dt>Idioma original</dt>
           <dd>{post.data.originalLanguage}</dd>
+        </div>
+        <div>
+          <dt>Puede interesar a</dt>
+          <dd>{post.data.audience.join(" · ")}</dd>
         </div>
         <div>
           <dt>Fecha de revisión</dt>
@@ -104,8 +122,24 @@ const formatDate = (date: Date) =>
   </main>
 
   <footer class="site-footer">
-    <p>Novedades Tourette. Prototipo personal estático.</p>
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <div>
+        <strong>Novedades Tourette</strong>
+        <p>Prototipo personal de boletín informativo en el entorno de APASTTA.</p>
+      </div>
+    </div>
+    <nav aria-label="Enlaces del pie">
+      <p class="eyebrow">Enlaces</p>
+      <a href={base}>Inicio</a>
+      <a href={`${base}#fichas`}>Fichas</a>
+      <a href={`${base}#fuentes`}>Fuentes</a>
+    </nav>
+    <div>
+      <p class="eyebrow">Aviso</p>
+      <p>Contenido informativo. No sustituye la valoración de profesionales sanitarios.</p>
+    </div>
   </footer>
 
-  <script is:inline src="/novedades-tourette/share.js"></script>
+  <script is:inline src={`${base}share.js`}></script>
 </BaseLayout>

@@ -2,6 +2,7 @@
 title: "CDC actualiza recursos sobre Tourette para familias y educadores"
 date: 2026-03-27
 category: "Divulgación"
+audience: ["Familias", "Docentes", "Personas con Tourette"]
 tags: ["CDC", "educación", "familias", "recursos", "escuela"]
 excerpt: "La página temática del CDC reúne información básica, diagnóstico, tratamiento, recursos educativos y materiales de formación sobre Tourette."
 source: "Centers for Disease Control and Prevention (CDC)"

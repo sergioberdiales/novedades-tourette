@@ -6,6 +6,8 @@ const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
+const featured = posts[0];
+
 const categories = [
   "Todos",
   "Investigación",
@@ -17,54 +19,121 @@ const categories = [
   "Divulgación",
 ];
 
+const audiences = [
+  "Todos",
+  ...Array.from(new Set(posts.flatMap((post) => post.data.audience))).sort(),
+];
+
+const base = import.meta.env.BASE_URL;
+
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("es-ES", {
-    day: "2-digit",
+    day: "numeric",
     month: "long",
     year: "numeric",
   }).format(date);
 ---
 
 <BaseLayout>
-  <header class="site-hero">
-    <nav class="topbar" aria-label="Navegación principal">
-      <a class="brand" href={import.meta.env.BASE_URL}>Novedades Tourette</a>
-      <a class="nav-link" href="https://touretteasturias.org/">APASTTA</a>
+  <header class="site-header">
+    <a class="brand-lockup" href={base} aria-label="Novedades Tourette, inicio">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>
+        <strong>Novedades Tourette</strong>
+        <small>Boletín informativo</small>
+      </span>
+    </a>
+    <nav class="nav-menu" aria-label="Navegación principal">
+      <a href={base}>Inicio</a>
+      <a href="#fichas">Fichas</a>
+      <a href="#fuentes">Fuentes</a>
+      <a href="#proyecto">Sobre el proyecto</a>
     </nav>
-    <div class="hero-inner">
-      <p class="eyebrow">Boletín personal sobre Tourette y trastornos asociados</p>
-      <h1>Novedades Tourette</h1>
-      <p class="hero-copy">
-        Prototipo personal para recopilar novedades fiables sobre investigación,
-        tratamientos, recursos para familias, educación, asociaciones, eventos y
-        divulgación relacionada con el Síndrome de Tourette.
-      </p>
-      <p class="medical-note" role="note">
-        Esta página tiene fines informativos y no sustituye la valoración de
-        profesionales sanitarios.
-      </p>
-    </div>
+    <a class="context-link" href="https://touretteasturias.org/">
+      <span aria-hidden="true"></span>
+      En el entorno de APASTTA
+    </a>
   </header>
 
-  <main id="contenido">
-    <section class="intro-section" aria-labelledby="ultimas-novedades">
-      <div class="section-heading">
-        <p class="eyebrow">Primera versión</p>
-        <h2 id="ultimas-novedades">Últimas fichas</h2>
-        <p>
-          Cada ficha resume una fuente real seleccionada por su utilidad
-          informativa y deja visible el enlace original para facilitar una
-          lectura prudente y trazable.
+  <main id="contenido" class="home-main">
+    <section class="hero-panel" aria-labelledby="titulo-principal">
+      <div class="hero-copy-block">
+        <p class="eyebrow">Observatorio editorial</p>
+        <h1 id="titulo-principal">Novedades fiables sobre el <em>Síndrome de Tourette</em></h1>
+        <p class="hero-copy">
+          Un boletín informativo para seguir novedades sobre investigación,
+          tratamientos, educación, familias, asociaciones, eventos y divulgación
+          relacionada con el Síndrome de Tourette y trastornos asociados.
         </p>
+      </div>
+      <aside class="notice-card" aria-label="Aviso sanitario">
+        <p class="eyebrow">Aviso</p>
+        <p>
+          Esta página tiene fines informativos y <strong>no sustituye la
+          valoración de profesionales sanitarios.</strong>
+        </p>
+      </aside>
+    </section>
+
+    <section class="featured-section" aria-labelledby="destacada">
+      <div class="section-row">
+        <h2 id="destacada">Novedad destacada</h2>
+        <p>Esta semana</p>
+      </div>
+
+      <article class="featured-card">
+        <div class="featured-main">
+          <div class="item-meta">
+            <span class="category-pill"><span aria-hidden="true"></span>{featured.data.category}</span>
+            <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date)}</time>
+            <span>{featured.data.sourceType}</span>
+          </div>
+          <h3>{featured.data.title}</h3>
+          <p>{featured.data.excerpt}</p>
+          <p class="caution-line">
+            <span aria-hidden="true"></span>
+            Conviene leerlo con valoración individual y contexto clínico.
+          </p>
+          <div class="featured-actions">
+            <a class="primary-action" href={`${base}posts/${featured.slug}/`}>Leer ficha completa</a>
+            <a class="secondary-action" href={featured.data.originalUrl} rel="noreferrer">Ir a la fuente original ↗</a>
+          </div>
+        </div>
+        <aside class="featured-side">
+          <p class="eyebrow">Fuente</p>
+          <strong>{featured.data.source}</strong>
+          <span>{featured.data.sourceType}</span>
+          <p class="eyebrow">Puede interesar a</p>
+          <span>{featured.data.audience.join(" · ")}</span>
+        </aside>
+      </article>
+    </section>
+
+    <section id="fichas" class="news-section" aria-labelledby="ultimas-novedades">
+      <div class="section-row">
+        <h2 id="ultimas-novedades">Últimas novedades</h2>
+        <p data-results-count>{posts.length} fichas</p>
       </div>
 
       <form class="filters" role="search" aria-label="Filtrar novedades">
-        <div class="search-field">
-          <label for="search">Buscar por texto</label>
-          <input id="search" name="search" type="search" placeholder="Ej. escuela, terapia, genética..." />
+        <div class="filter-field filter-field-wide">
+          <label for="search">Buscar</label>
+          <input id="search" name="search" type="search" placeholder="Título, etiqueta, fuente..." />
         </div>
-        <fieldset>
-          <legend>Categoría</legend>
+        <div class="filter-field">
+          <label for="category-select">Categoría</label>
+          <select id="category-select" name="category" data-category-select>
+            {categories.map((category) => <option value={category}>{category}</option>)}
+          </select>
+        </div>
+        <div class="filter-field">
+          <label for="audience-select">Público</label>
+          <select id="audience-select" name="audience" data-audience-select>
+            {audiences.map((audience) => <option value={audience}>{audience}</option>)}
+          </select>
+        </div>
+        <fieldset class="filter-pills">
+          <legend>Categorías rápidas</legend>
           <div class="category-list" data-category-filters>
             {
               categories.map((category) => (
@@ -82,8 +151,6 @@ const formatDate = (date: Date) =>
         </fieldset>
       </form>
 
-      <p class="results-count" data-results-count>{posts.length} novedades disponibles</p>
-
       <div class="post-grid" data-post-list>
         {
           posts.map((post) => (
@@ -91,23 +158,29 @@ const formatDate = (date: Date) =>
               class="post-card"
               data-post-card
               data-category={post.data.category}
-              data-search={`${post.data.title} ${post.data.summary} ${post.data.tags.join(" ")}`.toLowerCase()}
+              data-audiences={post.data.audience.join("|")}
+              data-search={`${post.data.title} ${post.data.excerpt} ${post.data.summary} ${post.data.source} ${post.data.sourceType} ${post.data.audience.join(" ")} ${post.data.tags.join(" ")}`.toLowerCase()}
             >
               <div class="card-meta">
+                <span class="category-dot"><span aria-hidden="true"></span>{post.data.category}</span>
                 <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-                <span>{post.data.category}</span>
               </div>
               <h3>
-                <a href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>{post.data.title}</a>
+                <a href={`${base}posts/${post.slug}/`}>{post.data.title}</a>
               </h3>
               <p>{post.data.excerpt}</p>
               <div class="tag-list" aria-label="Etiquetas">
-                {post.data.tags.map((tag) => <span>{tag}</span>)}
+                {post.data.tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
               </div>
-              <p class="source">Fuente original: {post.data.source}</p>
-              <a class="read-more" href={`${import.meta.env.BASE_URL}posts/${post.slug}/`}>
-                Ver ficha completa
-              </a>
+              <div class="card-divider"></div>
+              <div class="card-source">
+                <span>{post.data.sourceType}</span>
+                <strong>{post.data.source}</strong>
+              </div>
+              <div class="card-actions">
+                <a class="read-more" href={`${base}posts/${post.slug}/`}>Leer ficha completa →</a>
+                <a class="source-link" href={post.data.originalUrl} rel="noreferrer">Fuente ↗</a>
+              </div>
             </article>
           ))
         }
@@ -116,14 +189,58 @@ const formatDate = (date: Date) =>
         No hay fichas que coincidan con esos filtros.
       </p>
     </section>
+
+    <section id="fuentes" class="method-section" aria-labelledby="metodo">
+      <div>
+        <p class="eyebrow">Método</p>
+        <h2 id="metodo">Cómo seleccionamos las fuentes</h2>
+      </div>
+      <div class="method-copy">
+        <p>
+          Las novedades se seleccionan priorizando fuentes <strong>trazables</strong>,
+          con enlace siempre visible al material original, y procurando claridad
+          para personas no expertas.
+        </p>
+        <ul>
+          <li>Fuentes trazables y verificables</li>
+          <li>Enlace visible a la fuente original</li>
+          <li>Prudencia informativa en salud</li>
+          <li>Lenguaje claro para familias</li>
+          <li>Utilidad para personas con Tourette</li>
+          <li>Equilibrio entre temas y públicos</li>
+        </ul>
+        <p class="method-note">
+          No emitimos recomendaciones clínicas propias. Cada ficha enlaza siempre
+          a la fuente original.
+        </p>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>
-      Proyecto personal inspirado por el trabajo asociativo de APASTTA. Contenido
-      real seleccionado para validación editorial inicial.
-    </p>
+  <footer id="proyecto" class="site-footer">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <div>
+        <strong>Novedades Tourette</strong>
+        <p>
+          Prototipo personal de boletín informativo en el entorno de
+          <a href="https://touretteasturias.org/">APASTTA</a>, Asociación del
+          Principado de Asturias del Síndrome de Tourette y Trastornos Asociados.
+        </p>
+      </div>
+    </div>
+    <nav aria-label="Enlaces del pie">
+      <p class="eyebrow">Enlaces</p>
+      <a href={base}>Inicio</a>
+      <a href="#fichas">Fichas</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
+    <div>
+      <p class="eyebrow">Aviso</p>
+      <p>Contenido informativo. No sustituye la valoración de profesionales sanitarios.</p>
+      <p class="updated">Última actualización: 29 de mayo de 2026</p>
+    </div>
   </footer>
 
-  <script is:inline src="/novedades-tourette/filters.js"></script>
+  <script is:inline src={`${base}filters.js`}></script>
 </BaseLayout>

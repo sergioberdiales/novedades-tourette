@@ -14,6 +14,7 @@ const posts = defineCollection({
       "Eventos",
       "Divulgación",
     ]),
+    audience: z.array(z.string()),
     tags: z.array(z.string()),
     excerpt: z.string(),
     source: z.string(),

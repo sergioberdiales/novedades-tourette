@@ -2,6 +2,7 @@
 title: "Ecopipam mantiene la mejoría de tics en un ensayo fase 3"
 date: 2026-05-26
 category: "Tratamientos"
+audience: ["Profesionales", "Familias", "Personas con Tourette"]
 tags: ["ecopipam", "ensayo clínico", "tics", "farmacología", "pediatría"]
 excerpt: "Un ensayo clínico internacional fase 3 evaluó la seguridad y el mantenimiento del efecto de ecopipam en personas con síndrome de Tourette."
 source: "JAMA Neurology / PubMed"
