@@ -59,7 +59,12 @@ const formatDate = (date: Date) =>
     <section class="hero-panel" aria-labelledby="titulo-principal">
       <div class="hero-copy-block">
         <p class="eyebrow">Observatorio editorial</p>
-        <h1 id="titulo-principal">Novedades fiables sobre el <em>Síndrome de Tourette</em></h1>
+        <h1 id="titulo-principal" aria-label="Novedades fiables sobre el Síndrome de Tourette">
+          <span class="desktop-title" aria-hidden="true">
+            Novedades fiables sobre el <em>Síndrome de Tourette</em>
+          </span>
+          <span class="mobile-title" aria-hidden="true">Información fiable sobre Tourette</span>
+        </h1>
         <p class="hero-copy">
           Un boletín informativo para seguir novedades sobre investigación,
           tratamientos, educación, familias, asociaciones, eventos y divulgación
