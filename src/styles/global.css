@@ -376,6 +376,7 @@ svg {
 .primary-action,
 .secondary-action,
 .filter-button,
+.source-cta a,
 .share-actions a,
 .share-actions button {
   min-height: 2.8rem;
@@ -403,6 +404,7 @@ svg {
 
 .secondary-action,
 .filter-button,
+.source-cta a,
 .share-actions a,
 .share-actions button {
   background: var(--paper);
@@ -410,6 +412,7 @@ svg {
 }
 
 .secondary-action:hover,
+.source-cta a:hover,
 .share-actions a:hover,
 .share-actions button:hover {
   color: var(--ink-strong);
@@ -770,6 +773,10 @@ dd a {
 .content-section li {
   color: var(--muted-strong);
   font-size: 1.08rem;
+}
+
+.source-cta {
+  margin: -0.6rem 0 2rem;
 }
 
 .medical-note {

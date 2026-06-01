@@ -57,6 +57,12 @@ const formatDate = (date: Date) =>
         <p>{post.data.summary}</p>
       </section>
 
+      <div class="source-cta">
+        <a href={post.data.originalUrl} target="_blank" rel="noopener noreferrer">
+          Consultar fuente original ↗
+        </a>
+      </div>
+
       <p class="medical-note" role="note">
         Prudencia médica: {post.data.caution}
       </p>
@@ -94,7 +100,7 @@ const formatDate = (date: Date) =>
           </div>
           <div>
             <dt>Enlace original</dt>
-            <dd><a href={post.data.originalUrl}>{post.data.originalUrl}</a></dd>
+            <dd><a href={post.data.originalUrl} target="_blank" rel="noopener noreferrer">{post.data.originalUrl}</a></dd>
           </div>
           <div>
             <dt>Idioma original</dt>
