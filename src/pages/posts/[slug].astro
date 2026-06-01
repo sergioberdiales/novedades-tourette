@@ -24,13 +24,13 @@ const formatDate = (date: Date) =>
   }).format(date);
 ---
 
-<BaseLayout title={`${post.data.title} | Novedades Tourette`} description={post.data.excerpt}>
+<BaseLayout title={`${post.data.title} | Novedades sobre el Síndrome de Tourette`} description={post.data.excerpt}>
   <header class="site-header">
-    <a class="brand-lockup" href={base} aria-label="Novedades Tourette, inicio">
+    <a class="brand-lockup" href={base} aria-label="Novedades sobre el Síndrome de Tourette, inicio">
       <span class="brand-mark" aria-hidden="true">N</span>
       <span>
-        <strong>Novedades Tourette</strong>
-        <small>Boletín informativo</small>
+        <strong>Novedades</strong>
+        <small>Síndrome de Tourette</small>
       </span>
     </a>
     <nav class="nav-menu" aria-label="Navegación principal">
@@ -43,6 +43,23 @@ const formatDate = (date: Date) =>
       <span aria-hidden="true"></span>
       En el entorno de APASTTA
     </a>
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menú">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="sr-only">Menú</span>
+      </summary>
+      <nav class="mobile-menu-panel" aria-label="Menú móvil">
+        <a href={base}>Inicio</a>
+        <a href={`${base}#fichas`}>Fichas</a>
+        <a href={`${base}#fuentes`}>Fuentes</a>
+        <a href={`${base}#proyecto`}>Sobre el proyecto</a>
+        <a href="https://touretteasturias.org/">En el entorno de APASTTA</a>
+      </nav>
+    </details>
   </header>
 
   <main id="contenido" class="post-page">
@@ -127,7 +144,7 @@ const formatDate = (date: Date) =>
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true">N</span>
       <div>
-        <strong>Novedades Tourette</strong>
+        <strong>Novedades sobre el Síndrome de Tourette</strong>
         <p>Prototipo personal de boletín informativo en el entorno de APASTTA.</p>
       </div>
     </div>

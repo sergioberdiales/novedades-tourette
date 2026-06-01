@@ -116,6 +116,16 @@ svg {
   transform: translateY(0);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .eyebrow {
   margin: 0 0 0.8rem;
   color: var(--accent);
@@ -220,6 +230,68 @@ svg {
   background: var(--accent-soft);
 }
 
+.mobile-menu {
+  display: none;
+  position: relative;
+  justify-self: end;
+}
+
+.mobile-menu summary {
+  width: 2.65rem;
+  height: 2.65rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu-icon {
+  display: grid;
+  gap: 0.26rem;
+  width: 1.15rem;
+}
+
+.menu-icon span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ink-strong);
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  z-index: 30;
+  width: min(18rem, calc(100vw - 2rem));
+  display: grid;
+  gap: 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: var(--paper);
+  box-shadow: 0 1rem 2.5rem rgba(21, 45, 64, 0.14);
+  padding: 0.55rem;
+}
+
+.mobile-menu-panel a {
+  border-radius: 0.35rem;
+  color: var(--ink-strong);
+  font-weight: 700;
+  padding: 0.8rem 0.9rem;
+  text-decoration: none;
+}
+
+.mobile-menu-panel a:hover {
+  background: var(--mist);
+}
+
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
@@ -233,10 +305,6 @@ svg {
 .hero-copy-block h1 em {
   color: var(--accent);
   font-style: italic;
-}
-
-.mobile-title {
-  display: none;
 }
 
 .hero-copy {
@@ -882,6 +950,7 @@ dd a {
 
   .brand-lockup {
     gap: 0.65rem;
+    min-width: 0;
   }
 
   .brand-mark {
@@ -895,10 +964,20 @@ dd a {
     font-size: 1.08rem;
   }
 
-  .brand-lockup small,
   .nav-menu,
   .context-link {
     display: none;
+  }
+
+  .brand-lockup small {
+    margin-top: 0.18rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .mobile-menu {
+    display: block;
+    margin-left: auto;
   }
 
   .hero-panel {
@@ -908,14 +987,6 @@ dd a {
 
   .hero-copy-block .eyebrow {
     display: none;
-  }
-
-  .desktop-title {
-    display: none;
-  }
-
-  .mobile-title {
-    display: block;
   }
 
   h1 {

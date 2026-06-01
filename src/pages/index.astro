@@ -37,11 +37,11 @@ const formatDate = (date: Date) =>
 
 <BaseLayout>
   <header class="site-header">
-    <a class="brand-lockup" href={base} aria-label="Novedades Tourette, inicio">
+    <a class="brand-lockup" href={base} aria-label="Novedades sobre el Síndrome de Tourette, inicio">
       <span class="brand-mark" aria-hidden="true">N</span>
       <span>
-        <strong>Novedades Tourette</strong>
-        <small>Boletín informativo</small>
+        <strong>Novedades</strong>
+        <small>Síndrome de Tourette</small>
       </span>
     </a>
     <nav class="nav-menu" aria-label="Navegación principal">
@@ -54,17 +54,31 @@ const formatDate = (date: Date) =>
       <span aria-hidden="true"></span>
       En el entorno de APASTTA
     </a>
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menú">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="sr-only">Menú</span>
+      </summary>
+      <nav class="mobile-menu-panel" aria-label="Menú móvil">
+        <a href={base}>Inicio</a>
+        <a href="#fichas">Fichas</a>
+        <a href="#fuentes">Fuentes</a>
+        <a href="#proyecto">Sobre el proyecto</a>
+        <a href="https://touretteasturias.org/">En el entorno de APASTTA</a>
+      </nav>
+    </details>
   </header>
 
   <main id="contenido" class="home-main">
     <section class="hero-panel" aria-labelledby="titulo-principal">
       <div class="hero-copy-block">
         <p class="eyebrow">Observatorio editorial</p>
-        <h1 id="titulo-principal" aria-label="Novedades fiables sobre el Síndrome de Tourette">
-          <span class="desktop-title" aria-hidden="true">
-            Novedades fiables sobre el <em>Síndrome de Tourette</em>
-          </span>
-          <span class="mobile-title" aria-hidden="true">Información fiable sobre Tourette</span>
+        <h1 id="titulo-principal">
+          Información fiable sobre el <em>Síndrome de Tourette</em>
         </h1>
         <p class="hero-copy">
           Un boletín informativo para seguir novedades sobre investigación,
@@ -227,7 +241,7 @@ const formatDate = (date: Date) =>
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true">N</span>
       <div>
-        <strong>Novedades Tourette</strong>
+        <strong>Novedades sobre el Síndrome de Tourette</strong>
         <p>
           Prototipo personal de boletín informativo en el entorno de
           <a href="https://touretteasturias.org/">APASTTA</a>, Asociación del
