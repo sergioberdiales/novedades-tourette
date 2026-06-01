@@ -6,8 +6,8 @@ const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const featured = posts[0];
-const latestPosts = posts.slice(1);
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const latestPosts = posts.filter((post) => post.slug !== featured.slug);
 
 const categories = [
   "Todos",

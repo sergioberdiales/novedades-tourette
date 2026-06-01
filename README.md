@@ -66,6 +66,15 @@ caution: "Aviso de prudencia médica específico para esta ficha."
 
 La ficha publicada mostrará una única sección editorial titulada `Resumen`.
 
+Campo opcional:
+
+```md
+featured: true
+```
+
+Si una ficha incluye `featured: true`, se mostrará como `Novedad destacada`.
+Si ninguna ficha lo incluye, se destacará automáticamente la noticia más reciente.
+
 Categorías válidas:
 
 - `Investigación`

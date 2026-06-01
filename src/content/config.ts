@@ -25,6 +25,7 @@ const posts = defineCollection({
     checkedDate: z.coerce.date(),
     summary: z.string(),
     caution: z.string(),
+    featured: z.boolean().optional().default(false),
   }),
 });
 
