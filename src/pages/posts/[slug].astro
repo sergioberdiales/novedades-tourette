@@ -52,45 +52,6 @@ const formatDate = (date: Date) =>
       <h1>{post.data.title}</h1>
       <p class="lead">{post.data.excerpt}</p>
 
-      <dl class="post-facts">
-        <div>
-          <dt>Fecha</dt>
-          <dd><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></dd>
-        </div>
-        <div>
-          <dt>Fuente</dt>
-          <dd>{post.data.source}</dd>
-        </div>
-        <div>
-          <dt>Tipo de fuente</dt>
-          <dd>{post.data.sourceType}</dd>
-        </div>
-        <div>
-          <dt>Nivel de lectura</dt>
-          <dd>{post.data.evidenceLevel}</dd>
-        </div>
-        <div>
-          <dt>Enlace original</dt>
-          <dd><a href={post.data.originalUrl}>{post.data.originalUrl}</a></dd>
-        </div>
-        <div>
-          <dt>Idioma original</dt>
-          <dd>{post.data.originalLanguage}</dd>
-        </div>
-        <div>
-          <dt>Puede interesar a</dt>
-          <dd>{post.data.audience.join(" · ")}</dd>
-        </div>
-        <div>
-          <dt>Fecha de revisión</dt>
-          <dd><time datetime={post.data.checkedDate.toISOString()}>{formatDate(post.data.checkedDate)}</time></dd>
-        </div>
-        <div>
-          <dt>Etiquetas</dt>
-          <dd class="tag-list">{post.data.tags.map((tag) => <span>{tag}</span>)}</dd>
-        </div>
-      </dl>
-
       <section class="content-section">
         <h2>Resumen</h2>
         <p>{post.data.summary}</p>
@@ -110,6 +71,48 @@ const formatDate = (date: Date) =>
           <button type="button" data-copy-link={shareUrl}>Copiar enlace</button>
         </div>
         <p class="copy-status" aria-live="polite" data-copy-status></p>
+      </section>
+
+      <section class="metadata-section" aria-labelledby="metadata-title">
+        <h2 id="metadata-title">Información de la ficha</h2>
+        <dl class="post-facts">
+          <div>
+            <dt>Fecha</dt>
+            <dd><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></dd>
+          </div>
+          <div>
+            <dt>Fuente</dt>
+            <dd>{post.data.source}</dd>
+          </div>
+          <div>
+            <dt>Tipo de fuente</dt>
+            <dd>{post.data.sourceType}</dd>
+          </div>
+          <div>
+            <dt>Nivel de lectura</dt>
+            <dd>{post.data.evidenceLevel}</dd>
+          </div>
+          <div>
+            <dt>Enlace original</dt>
+            <dd><a href={post.data.originalUrl}>{post.data.originalUrl}</a></dd>
+          </div>
+          <div>
+            <dt>Idioma original</dt>
+            <dd>{post.data.originalLanguage}</dd>
+          </div>
+          <div>
+            <dt>Puede interesar a</dt>
+            <dd>{post.data.audience.join(" · ")}</dd>
+          </div>
+          <div>
+            <dt>Fecha de revisión</dt>
+            <dd><time datetime={post.data.checkedDate.toISOString()}>{formatDate(post.data.checkedDate)}</time></dd>
+          </div>
+          <div>
+            <dt>Etiquetas</dt>
+            <dd class="tag-list">{post.data.tags.map((tag) => <span>{tag}</span>)}</dd>
+          </div>
+        </dl>
       </section>
     </article>
   </main>

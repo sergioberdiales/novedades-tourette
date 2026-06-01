@@ -760,7 +760,8 @@ dd a {
 }
 
 .content-section h2,
-.share-panel h2 {
+.share-panel h2,
+.metadata-section h2 {
   margin-bottom: 0.8rem;
   font-size: 1.75rem;
 }
@@ -784,6 +785,12 @@ dd a {
 
 .share-panel {
   margin-top: 2.2rem;
+  padding-top: 1.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.metadata-section {
+  margin-top: 2.6rem;
   padding-top: 1.7rem;
   border-top: 1px solid var(--line);
 }
