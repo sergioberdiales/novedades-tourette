@@ -59,13 +59,12 @@ evidenceLevel: "Lectura divulgativa / estudio observacional / ensayo clínico...
 originalUrl: "https://example.org/fuente-original"
 originalLanguage: "Español"
 checkedDate: 2026-05-29
-summary: "Resumen en español de la novedad."
-relevance: "Por qué puede ser relevante para familias, personas afectadas o profesionales."
+summary: "Resumen breve, claro y prudente en español. Debe explicar qué dice la fuente, datos relevantes y cautelas importantes si las hay."
 caution: "Aviso de prudencia médica específico para esta ficha."
 ---
-
-Texto adicional de la ficha si hace falta.
 ```
+
+La ficha publicada mostrará una única sección editorial titulada `Resumen`.
 
 Categorías válidas:
 

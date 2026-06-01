@@ -24,7 +24,6 @@ const posts = defineCollection({
     originalLanguage: z.string(),
     checkedDate: z.coerce.date(),
     summary: z.string(),
-    relevance: z.string(),
     caution: z.string(),
   }),
 });

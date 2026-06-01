@@ -771,13 +771,6 @@ dd a {
   font-size: 1.08rem;
 }
 
-.relevance {
-  border: 1px solid var(--line);
-  border-radius: 0.55rem;
-  background: var(--paper-soft);
-  padding: 1.4rem;
-}
-
 .medical-note {
   margin: 2rem 0;
   border: 1px solid #e0bba9;

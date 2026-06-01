@@ -11,17 +11,7 @@ evidenceLevel: "Divulgación sanitaria institucional"
 originalUrl: "https://www.cdc.gov/tourette-syndrome/index.html"
 originalLanguage: "Inglés"
 checkedDate: 2026-05-29
-summary: "El CDC mantiene una sección específica sobre síndrome de Tourette con páginas para público general, educadores y familias. Incluye información sobre qué son los tics, diagnóstico, tratamientos, datos, recursos descargables, formación y condiciones asociadas. Varias páginas de la sección aparecen actualizadas en marzo de 2026."
-relevance: "Es una fuente útil como punto de partida para familias, profesorado y asociaciones porque organiza recursos básicos y enlaza contenidos educativos en un lenguaje accesible."
+summary: >-
+  El CDC mantiene una sección específica sobre síndrome de Tourette con información para público general, familias y educadores. Incluye páginas sobre qué son los tics, diagnóstico, tratamientos, datos, recursos descargables, materiales formativos, educación y condiciones asociadas; varias páginas aparecen actualizadas en marzo de 2026. La fuente es útil como punto de partida porque organiza contenidos básicos en lenguaje accesible y separa recursos para el entorno escolar. Al estar escrita desde el contexto sanitario y educativo de Estados Unidos, conviene complementarla con recursos locales, profesionales de referencia y normativa educativa aplicable en España.
 caution: "Los recursos institucionales generales ayudan a orientarse, pero no sustituyen la valoración clínica individual ni resuelven por sí solos decisiones sobre diagnóstico, tratamiento o adaptaciones escolares."
 ---
-
-## Qué dice la fuente
-
-La página central del CDC define el Tourette como una condición del sistema nervioso que causa tics y agrupa recursos por perfiles: información general, diagnóstico, tratamiento, materiales, formación y educación.
-
-También incluye una sección específica para educadores, con énfasis en aprender sobre el Tourette y contribuir a crear entornos escolares de apoyo.
-
-## Qué conviene tener en cuenta
-
-Aunque es una fuente institucional fiable, está escrita desde el contexto sanitario y educativo de Estados Unidos. Para uso en España conviene complementarla con recursos locales, profesionales de referencia y normativa educativa aplicable.
