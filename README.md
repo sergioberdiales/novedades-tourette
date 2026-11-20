@@ -26,7 +26,7 @@ npm install
 npm run dev
 ```
 
-Astro mostrará una URL local, normalmente `http://localhost:4321/novedades-tourette/`.
+Astro mostrará una URL local, normalmente `http://localhost:4321/`.
 
 ## Comprobar la build
 
@@ -106,11 +106,11 @@ git remote add origin https://github.com/sergioberdiales/novedades-tourette.git
 git push -u origin main
 ```
 
-3. El archivo `astro.config.mjs` ya está configurado para este repositorio:
+3. El archivo `astro.config.mjs` utiliza el subdominio de APASTTA como dirección pública:
 
 ```js
-site: "https://sergioberdiales.github.io",
-base: "/novedades-tourette",
+site: "https://noticias.touretteasturias.org",
+base: "/",
 ```
 
 4. En GitHub, ve a `Settings` > `Pages`.
@@ -118,6 +118,31 @@ base: "/novedades-tourette",
 6. El archivo `.github/workflows/deploy.yml` despliega automáticamente la web estática al hacer push a `main`.
 
 Esta primera fase no incluye automatización editorial ni generación de contenidos. El despliegue de GitHub Pages solo serviría para publicar el sitio estático cuando se suban cambios.
+
+## Dominio público noticias.touretteasturias.org
+
+GitHub Actions compila Astro al recibir cambios en `main` y despliega en el entorno `github-pages`. Los DNS del dominio institucional se gestionan en WordPress.com. La URL anterior era `https://sergioberdiales.github.io/novedades-tourette/`.
+
+### Reproducir la configuración del dominio
+
+1. Prepara en una rama el cambio en `astro.config.mjs` a `site: "https://noticias.touretteasturias.org"` y `base: "/"`. Conserva `trailingSlash: "always"`. Compila y comprueba que portada, fichas, favicon, CSS y scripts se resuelven desde `/` y que los enlaces para compartir incluyen el nuevo host. Guarda el cambio para desplegarlo durante la migración.
+2. Desde los **ajustes de la cuenta** de GitHub `sergioberdiales`, abre **Pages → Add a domain** e introduce `noticias.touretteasturias.org`. En WordPress.com, abre **Escritorio de alojamiento → Dominios → touretteasturias.org → Ajustes → Registros DNS → Añadir registro**. Añade el `TXT` con el nombre y valor exactos que muestre GitHub. Para este subdominio, el nombre esperado en la zona es `_github-pages-challenge-sergioberdiales.noticias`. Completa **Verify** en GitHub y conserva el `TXT`.
+3. Durante la ventana de cambio, abre **Settings → Pages** del **repositorio** `sergioberdiales/novedades-tourette`. Guarda `noticias.touretteasturias.org` como **Custom domain** y conserva **GitHub Actions** como origen. Con ese origen, la asociación del dominio se configura en Pages.
+4. En los registros DNS de WordPress.com, añade el registro explícito `CNAME` con **Nombre** `noticias` y **Destino** `sergioberdiales.github.io`. Usa el TTL predeterminado. Si el panel ya muestra una entrada explícita para `noticias`, edítala. Si el alias actual procede del comodín, el registro explícito prevalecerá para este nombre. Mantén los registros del dominio principal, `www`, correo y demás subdominios.
+5. Incorpora a `main` el cambio de Astro preparado en el paso 1 y confirma que finaliza el flujo **Deploy to GitHub Pages**. Consulta el CNAME con `dig noticias.touretteasturias.org CNAME +short`. Cuando GitHub confirme el DNS y disponga del certificado, activa **Enforce HTTPS**.
+6. Comprueba la portada, una ficha abierta directamente, búsqueda, filtros, copiar enlace y carga de recursos por HTTPS. Prueba también la portada y una ficha con la URL anterior para comprobar la redirección. Actualiza el menú de WordPress.com cuando funcionen las rutas públicas del subdominio.
+
+Si hay que volver atrás, retira el CNAME explícito hacia GitHub de la zona DNS o repón el valor previo si el registro existía. Mantén la verificación durante la propagación. Quita el dominio personalizado de Pages y vuelve a desplegar con `site: "https://sergioberdiales.github.io"` y `base: "/novedades-tourette"`. Comprueba la portada y una ficha con sus URL anteriores.
+
+[Dominios personalizados en GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) · [Verificación de dominio en GitHub](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) · [Registros DNS en WordPress.com](https://wordpress.com/support/domains/custom-dns/add-a-new-dns-record/)
+
+### Enlace desde la web institucional
+
+La web de APASTTA usa un tema clásico. En WordPress.com, abre **Apariencia → Menús**, selecciona el menú principal y añade un **Enlace personalizado** con el texto `Noticias Tourette` y la dirección `https://noticias.touretteasturias.org/`, por ejemplo junto a `Blog` o `Publicaciones APASTTA`. Si el panel ofrece el personalizador, la ruta equivalente es **Apariencia → Personalizar → Menús**. Comprueba el enlace también desde el menú móvil.
+
+La aplicación ya identifica a APASTTA y enlaza de vuelta a su web desde la cabecera. La vinculación se puede hacer mediante un enlace directo y conservar así la navegación, la búsqueda y los enlaces individuales de la aplicación. Si en la futura plataforma se quiere reforzar la continuidad visual, bastaría con acordar el uso del nombre, el logotipo y los colores institucionales.
+
+[Añadir enlaces a un menú de WordPress.com](https://wordpress.com/support/menus/add-links-to-a-menu/)
 
 ## Roadmap futuro
 

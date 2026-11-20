@@ -8,6 +8,10 @@ const posts = (await getCollection("posts")).sort(
 
 const featured = posts.find((post) => post.data.featured) ?? posts[0];
 const latestPosts = posts.filter((post) => post.slug !== featured.slug);
+const lastUpdated = posts.reduce(
+  (latest, { data }) => data.checkedDate > latest ? data.checkedDate : latest,
+  featured.data.checkedDate,
+);
 
 const categories = [
   "Todos",
@@ -258,7 +262,9 @@ const formatDate = (date: Date) =>
     <div>
       <p class="eyebrow">Aviso</p>
       <p>Contenido informativo. No sustituye la valoración de profesionales sanitarios.</p>
-      <p class="updated">Última actualización: 29 de mayo de 2026</p>
+      <p class="updated">
+        Última actualización: <time datetime={lastUpdated.toISOString().slice(0, 10)}>{formatDate(lastUpdated)}</time>
+      </p>
     </div>
   </footer>
 
