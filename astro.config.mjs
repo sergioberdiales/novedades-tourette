@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://noticias.touretteasturias.org",
-  base: "/",
+  site: "https://sergioberdiales.github.io",
+  base: "/novedades-tourette",
   trailingSlash: "always",
 });

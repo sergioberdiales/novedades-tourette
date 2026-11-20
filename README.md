@@ -26,7 +26,7 @@ npm install
 npm run dev
 ```
 
-Astro mostrará una URL local, normalmente `http://localhost:4321/`.
+Astro mostrará una URL local, normalmente `http://localhost:4321/novedades-tourette/`.
 
 ## Comprobar la build
 
@@ -106,11 +106,11 @@ git remote add origin https://github.com/sergioberdiales/novedades-tourette.git
 git push -u origin main
 ```
 
-3. El archivo `astro.config.mjs` utiliza el subdominio de APASTTA como dirección pública:
+3. El archivo `astro.config.mjs` utiliza la dirección pública actual de GitHub Pages:
 
 ```js
-site: "https://noticias.touretteasturias.org",
-base: "/",
+site: "https://sergioberdiales.github.io",
+base: "/novedades-tourette",
 ```
 
 4. En GitHub, ve a `Settings` > `Pages`.
@@ -119,9 +119,11 @@ base: "/",
 
 Esta primera fase no incluye automatización editorial ni generación de contenidos. El despliegue de GitHub Pages solo serviría para publicar el sitio estático cuando se suban cambios.
 
-## Dominio público noticias.touretteasturias.org
+## Migración a noticias.touretteasturias.org
 
-GitHub Actions compila Astro al recibir cambios en `main` y despliega en el entorno `github-pages`. Los DNS del dominio institucional se gestionan en WordPress.com. La URL anterior era `https://sergioberdiales.github.io/novedades-tourette/`.
+GitHub Actions compila Astro al recibir cambios en `main` y despliega en el entorno `github-pages`. La URL pública es `https://sergioberdiales.github.io/novedades-tourette/`. Los DNS del dominio institucional se gestionan en WordPress.com.
+
+En el intento del 20 de noviembre de 2026, GitHub verificó la titularidad de `noticias.touretteasturias.org` con un TXT y WordPress.com publicó el CNAME explícito hacia `sergioberdiales.github.io`. La comprobación de Pages devolvió `InvalidCNAMEError` pese a que los DNS autoritativos y dos resolutores públicos ya devolvían el destino correcto. Se retiró la asociación en Pages y se volvió a desplegar con la URL de GitHub para conservar el acceso por HTTPS. El TXT y el CNAME quedaron preparados para reintentar el cambio tras la propagación.
 
 ### Reproducir la configuración del dominio
 
@@ -138,7 +140,7 @@ Si hay que volver atrás, retira el CNAME explícito hacia GitHub de la zona DNS
 
 ### Enlace desde la web institucional
 
-La web de APASTTA usa un tema clásico. En WordPress.com, abre **Apariencia → Menús**, selecciona el menú principal y añade un **Enlace personalizado** con el texto `Noticias Tourette` y la dirección `https://noticias.touretteasturias.org/`, por ejemplo junto a `Blog` o `Publicaciones APASTTA`. Si el panel ofrece el personalizador, la ruta equivalente es **Apariencia → Personalizar → Menús**. Comprueba el enlace también desde el menú móvil.
+La web de APASTTA usa un tema clásico. En WordPress.com, abre **Apariencia → Menús**, selecciona el menú principal y añade un **Enlace personalizado** con el texto `Noticias Tourette`, por ejemplo junto a `Blog` o `Publicaciones APASTTA`. Si el panel ofrece el personalizador, la ruta equivalente es **Apariencia → Personalizar → Menús**. Usa la dirección pública de GitHub Pages hasta que funcione el HTTPS del subdominio. Comprueba el enlace también desde el menú móvil.
 
 La aplicación ya identifica a APASTTA y enlaza de vuelta a su web desde la cabecera. La vinculación se puede hacer mediante un enlace directo y conservar así la navegación, la búsqueda y los enlaces individuales de la aplicación. Si en la futura plataforma se quiere reforzar la continuidad visual, bastaría con acordar el uso del nombre, el logotipo y los colores institucionales.
 
