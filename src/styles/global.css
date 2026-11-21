@@ -135,31 +135,11 @@ svg {
   text-transform: uppercase;
 }
 
-.site-header,
 .home-main,
 .site-footer,
 .post-page {
   width: min(100% - 3rem, 1500px);
   margin-inline: auto;
-}
-
-.site-header {
-  min-height: 5rem;
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) auto minmax(230px, 1fr);
-  gap: 1.25rem;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  background: rgba(247, 250, 253, 0.8);
-}
-
-.brand-lockup {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 0.9rem;
-  color: var(--ink-strong);
-  text-decoration: none;
 }
 
 .brand-mark {
@@ -175,25 +155,6 @@ svg {
   font-size: 1.55rem;
 }
 
-.brand-lockup strong {
-  display: block;
-  color: var(--ink-strong);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.45rem;
-  line-height: 1.05;
-}
-
-.brand-lockup small {
-  display: block;
-  margin-bottom: 0.2rem;
-  color: var(--muted);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
 .footer-brand strong {
   display: block;
   color: var(--ink-strong);
@@ -202,30 +163,6 @@ svg {
   line-height: 1.05;
 }
 
-.nav-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.55rem;
-}
-
-.nav-menu a,
-.context-link {
-  color: var(--muted-strong);
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.context-link {
-  display: inline-flex;
-  justify-self: end;
-  align-items: center;
-  gap: 0.55rem;
-  text-align: right;
-}
-
-.context-link span,
 .category-dot span,
 .category-pill span,
 .caution-line span {
@@ -235,68 +172,6 @@ svg {
   flex: 0 0 auto;
   border-radius: 999px;
   background: var(--accent-soft);
-}
-
-.mobile-menu {
-  display: none;
-  position: relative;
-  justify-self: end;
-}
-
-.mobile-menu summary {
-  width: 2.65rem;
-  height: 2.65rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--paper);
-  cursor: pointer;
-  list-style: none;
-}
-
-.mobile-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.menu-icon {
-  display: grid;
-  gap: 0.26rem;
-  width: 1.15rem;
-}
-
-.menu-icon span {
-  display: block;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--ink-strong);
-}
-
-.mobile-menu-panel {
-  position: absolute;
-  top: calc(100% + 0.65rem);
-  right: 0;
-  z-index: 30;
-  width: min(18rem, calc(100vw - 2rem));
-  display: grid;
-  gap: 0.15rem;
-  border: 1px solid var(--line);
-  border-radius: 0.45rem;
-  background: var(--paper);
-  box-shadow: 0 1rem 2.5rem rgba(21, 45, 64, 0.14);
-  padding: 0.55rem;
-}
-
-.mobile-menu-panel a {
-  border-radius: 0.35rem;
-  color: var(--ink-strong);
-  font-weight: 700;
-  padding: 0.8rem 0.9rem;
-  text-decoration: none;
-}
-
-.mobile-menu-panel a:hover {
-  background: var(--mist);
 }
 
 .hero-panel {
@@ -890,28 +765,12 @@ dd a {
 }
 
 @media (max-width: 1080px) {
-  .site-header {
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
-    padding: 1rem 0;
-  }
-
-  .nav-menu {
-    justify-content: flex-start;
-  }
-
-  .context-link {
-    justify-self: start;
-    text-align: left;
-  }
-
   .post-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 860px) {
-  .site-header,
   .home-main,
   .site-footer,
   .post-page {
@@ -948,58 +807,14 @@ dd a {
 }
 
 @media (max-width: 640px) {
-  .site-header {
-    width: 100%;
-    min-height: 0;
-    display: flex;
-    gap: 0.65rem;
-    padding: 0.55rem 0.85rem;
-    background: rgba(247, 250, 253, 0.96);
-  }
-
-  .brand-lockup {
-    gap: 0.55rem;
-    min-width: 0;
-  }
-
   .brand-mark {
     width: 2.1rem;
     height: 2.1rem;
     font-size: 1.1rem;
   }
 
-  .brand-lockup strong {
-    font-size: 0.98rem;
-    line-height: 1.02;
-  }
-
   .footer-brand strong {
     font-size: 1.08rem;
-  }
-
-  .nav-menu,
-  .context-link {
-    display: none;
-  }
-
-  .brand-lockup small {
-    margin-bottom: 0.08rem;
-    font-size: 0.56rem;
-    letter-spacing: 0.08em;
-  }
-
-  .mobile-menu {
-    display: block;
-    margin-left: auto;
-  }
-
-  .mobile-menu summary {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
-  .mobile-menu-panel {
-    top: calc(100% + 0.45rem);
   }
 
   .hero-panel {

@@ -25,43 +25,6 @@ const formatDate = (date: Date) =>
 ---
 
 <BaseLayout title={`${post.data.title} | Novedades sobre el Síndrome de Tourette`} description={post.data.excerpt}>
-  <header class="site-header">
-    <a class="brand-lockup" href={base} aria-label="Novedades sobre el Síndrome de Tourette, inicio">
-      <span class="brand-mark" aria-hidden="true">N</span>
-      <span class="brand-text">
-        <small>Novedades /</small>
-        <strong>Síndrome de Tourette</strong>
-      </span>
-    </a>
-    <nav class="nav-menu" aria-label="Navegación principal">
-      <a href={base}>Inicio</a>
-      <a href={`${base}#fichas`}>Fichas</a>
-      <a href={`${base}#fuentes`}>Fuentes</a>
-      <a href={`${base}#proyecto`}>Sobre el proyecto</a>
-    </nav>
-    <a class="context-link" href="https://touretteasturias.org/">
-      <span aria-hidden="true"></span>
-      En el entorno de APASTTA
-    </a>
-    <details class="mobile-menu">
-      <summary aria-label="Abrir menú">
-        <span class="menu-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="sr-only">Menú</span>
-      </summary>
-      <nav class="mobile-menu-panel" aria-label="Menú móvil">
-        <a href={base}>Inicio</a>
-        <a href={`${base}#fichas`}>Fichas</a>
-        <a href={`${base}#fuentes`}>Fuentes</a>
-        <a href={`${base}#proyecto`}>Sobre el proyecto</a>
-        <a href="https://touretteasturias.org/">En el entorno de APASTTA</a>
-      </nav>
-    </details>
-  </header>
-
   <main id="contenido" class="post-page">
     <article class="post-detail">
       <a class="back-link" href={`${base}#fichas`}>Volver al listado</a>

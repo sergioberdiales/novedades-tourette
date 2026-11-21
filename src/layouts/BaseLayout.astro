@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BoletinHeader from "../components/BoletinHeader.astro";
 
 const {
   title = "Novedades sobre el Síndrome de Tourette",
@@ -21,6 +22,7 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <BoletinHeader />
     <slot />
   </body>
 </html>

@@ -1,6 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
-  <rect width="64" height="64" rx="14" fill="#f4efe5"/>
-  <path d="M18 40c7-17 22-17 28 0" fill="none" stroke="#2f4f4f" stroke-width="5" stroke-linecap="round"/>
-  <circle cx="24" cy="27" r="4" fill="#9c5b3f"/>
-  <circle cx="40" cy="27" r="4" fill="#386b7f"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-21 -30 586 586" role="img" aria-labelledby="titulo">
+  <title id="titulo">APASTTA · Símbolo óptico de 16 píxeles</title>
+  <defs>
+    <path id="cinta-posterior" d="M68.98,42.75 C 93.56,42.71 111.75,57.34 116.74,80.36 C 127.03,126.62 155.89,166.7 193.78,194.95 C 228.86,221.11 269.86,233.09 308.42,220.86 C 332,224 345.84,277.38 374.21,291.21 C 435.12,320.12 485.6,367.91 508.46,427.79 C 515.37,445.85 519.88,462.89 515.55,476.93 C 510.61,492.92 494.25,504.38 474.06,504.59 L 455.38,504.65 C 431.07,504.64 412.76,491.83 405.85,471.39 C 393.05,432.87 373.63,402.68 346.9,382.24 C 325.93,366.26 295.4,355.79 268.79,356.22 C 242.61,356.91 219.56,361.65 202.49,373.98 C 193,347 181,312 164.32,287.34 C 88.38,245.61 39.21,183.76 23.76,110.84 C 16.68,79.32 21.57,43.19 68.98,42.75 Z" />
+    <path id="cinta-frontal" d="M476,43.63 C 504.43,43.49 523.41,60.8 523.22,88.83 C 522.48,130.23 498.53,184.73 469.48,218.43 C 429.27,266.09 379.23,289.91 317.31,315.25 C 261.32,336.4 216.43,359.4 179.65,393.06 C 160.71,411.04 145.05,439.11 134.72,470.39 C 128.34,489.6 111.79,501.46 91.16,501.92 L 72.08,502.18 C 47.83,502.44 29.59,485.84 30.06,464 C 31.29,424.65 61.78,374.82 100.74,337.03 C 146.47,292.11 197.93,267.14 258.9,242.2 C 305.67,222.55 345.88,208.37 378.44,173.86 C 405.92,145.72 420.82,112.89 428.1,80.82 C 433.71,56.48 451.13,43.68 476,43.63 Z" />
+    <linearGradient id="color-cabeza" gradientUnits="userSpaceOnUse" x1="81.1" y1="130.57" x2="165.24" y2="266.04">
+      <stop offset="0.0" stop-color="#31E6FF" />
+      <stop offset="0.25" stop-color="#15C3F9" />
+      <stop offset="0.5" stop-color="#019EE4" />
+      <stop offset="0.75" stop-color="#0177C6" />
+      <stop offset="1.0" stop-color="#015CAD" />
+    </linearGradient>
+    <linearGradient id="color-posterior" gradientUnits="userSpaceOnUse" x1="51.53" y1="41.61" x2="542.69" y2="438.21">
+      <stop offset="0.0" stop-color="#5CF4FF" />
+      <stop offset="0.25" stop-color="#08B5F8" />
+      <stop offset="0.5" stop-color="#00348A" />
+      <stop offset="0.75" stop-color="#0169B7" />
+      <stop offset="1.0" stop-color="#0185D7" />
+    </linearGradient>
+    <linearGradient id="color-frontal" gradientUnits="userSpaceOnUse" x1="81.35" y1="-158.77" x2="-188.59" y2="368.08">
+      <stop offset="0.0" stop-color="#0088D4" />
+      <stop offset="0.25" stop-color="#12ABEF" />
+      <stop offset="0.5" stop-color="#81E3FF" />
+      <stop offset="0.75" stop-color="#53CFFC" />
+      <stop offset="1.0" stop-color="#00A2EC" />
+    </linearGradient>
+  </defs>
+  <g id="simbolo">
+    <circle cx="274.4" cy="92" r="77" fill="url(#color-cabeza)" />
+    <g id="plano-posterior">
+      <use xlink:href="#cinta-posterior" fill="url(#color-posterior)" />
+    </g>
+    <g id="plano-frontal">
+      <use xlink:href="#cinta-frontal" fill="url(#color-frontal)" />
+    </g>
+  </g>
 </svg>
