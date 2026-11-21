@@ -142,72 +142,14 @@ svg {
   margin-inline: auto;
 }
 
-.brand-mark {
-  display: grid;
-  width: 3rem;
-  height: 3rem;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: white;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.55rem;
-}
-
-.footer-brand strong {
-  display: block;
-  color: var(--ink-strong);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4rem;
-  line-height: 1.05;
-}
-
 .category-dot span,
-.category-pill span,
-.caution-line span {
+.category-pill span {
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
   flex: 0 0 auto;
   border-radius: 999px;
   background: var(--accent-soft);
-}
-
-.hero-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: center;
-  min-height: 20rem;
-  padding: 3rem 0 2.7rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.hero-copy-block h1 em {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.hero-copy {
-  max-width: 900px;
-  margin: 1.35rem 0 0;
-  color: var(--muted-strong);
-  font-size: clamp(1.18rem, 2vw, 1.45rem);
-}
-
-.notice-card {
-  align-self: end;
-  border: 1px solid var(--line);
-  border-radius: 0.55rem;
-  background: var(--paper-soft);
-  padding: 1.55rem;
-}
-
-.notice-card p:last-child {
-  margin: 0;
-  color: var(--muted-strong);
-  font-size: 1.15rem;
 }
 
 .section-row {
@@ -227,7 +169,13 @@ svg {
   text-transform: uppercase;
 }
 
-.featured-section,
+.bulletin-intro {
+  margin: 1rem 0 .9rem;
+  color: var(--muted-strong);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 .news-section {
   padding: 3rem 0;
 }
@@ -247,9 +195,10 @@ svg {
   border-right: 1px solid var(--line);
 }
 
-.featured-main h3 {
+.featured-main h1 {
   margin: 1.1rem 0 0.7rem;
-  font-size: clamp(2rem, 4vw, 2.45rem);
+  font-size: clamp(1.6rem, 2.7vw, 2.125rem);
+  line-height: 1.15;
 }
 
 .featured-main p {
@@ -303,17 +252,10 @@ svg {
   padding: 0.22rem 0.75rem;
 }
 
-.caution-line {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: 1.05rem !important;
-  color: var(--warm) !important;
-  font-size: 0.98rem !important;
-}
-
-.caution-line span {
-  background: var(--warm);
+.featured-main .health-note {
+  margin-top: .85rem;
+  color: var(--muted);
+  font-size: .9375rem;
 }
 
 .featured-actions {
@@ -612,17 +554,11 @@ select {
 
 .site-footer {
   display: grid;
-  grid-template-columns: minmax(260px, 1.25fr) minmax(150px, 0.55fr) minmax(260px, 0.9fr);
+  grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 7vw, 6rem);
   align-items: start;
   border-top: 1px solid var(--line);
   padding: 3rem 0 3.5rem;
-}
-
-.footer-brand {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
 }
 
 .site-footer p {
@@ -777,20 +713,10 @@ dd a {
     width: min(100% - 2rem, 1500px);
   }
 
-  .hero-panel,
   .featured-card,
   .method-section,
   .site-footer {
     grid-template-columns: 1fr;
-  }
-
-  .hero-panel {
-    min-height: auto;
-    padding: 2.7rem 0;
-  }
-
-  .notice-card {
-    align-self: auto;
   }
 
   .featured-main {
@@ -807,25 +733,6 @@ dd a {
 }
 
 @media (max-width: 640px) {
-  .brand-mark {
-    width: 2.1rem;
-    height: 2.1rem;
-    font-size: 1.1rem;
-  }
-
-  .footer-brand strong {
-    font-size: 1.08rem;
-  }
-
-  .hero-panel {
-    gap: 0.9rem;
-    padding: 1rem 0 1.05rem;
-  }
-
-  .hero-copy-block .eyebrow {
-    display: none;
-  }
-
   h1 {
     font-size: clamp(1.75rem, 7.8vw, 2.15rem);
     line-height: 1.12;
@@ -835,12 +742,6 @@ dd a {
     font-size: 1.65rem;
   }
 
-  .hero-copy {
-    margin-top: 0.55rem;
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-
   .section-row {
     align-items: flex-start;
     flex-direction: column;
@@ -848,21 +749,6 @@ dd a {
     margin-bottom: 0.8rem;
   }
 
-  .notice-card {
-    padding: 0.85rem;
-  }
-
-  .notice-card .eyebrow {
-    margin-bottom: 0.35rem;
-    font-size: 0.72rem;
-  }
-
-  .notice-card p:last-child {
-    font-size: 0.92rem;
-    line-height: 1.45;
-  }
-
-  .featured-section,
   .news-section {
     padding: 1.25rem 0;
   }
@@ -876,7 +762,7 @@ dd a {
     padding-bottom: 0.9rem;
   }
 
-  .featured-main h3 {
+  .featured-main h1 {
     margin: 0.65rem 0 0.45rem;
     font-size: 1.35rem;
     line-height: 1.17;

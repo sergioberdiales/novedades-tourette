@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import EnlacesApastta from "../components/EnlacesApastta.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("posts")).sort(
@@ -41,45 +42,19 @@ const formatDate = (date: Date) =>
 
 <BaseLayout>
   <main id="contenido" class="home-main">
-    <section class="hero-panel" aria-labelledby="titulo-principal">
-      <div class="hero-copy-block">
-        <p class="eyebrow">Observatorio editorial</p>
-        <h1 id="titulo-principal">
-          Novedades sobre el <em>Síndrome de Tourette</em> y trastornos asociados
-        </h1>
-        <p class="hero-copy">
-          Un boletín informativo para seguir novedades sobre investigación,
-          tratamientos, educación, familias, asociaciones, eventos y divulgación
-          relacionada con el Síndrome de Tourette y trastornos asociados.
-        </p>
-      </div>
-      <aside class="notice-card" aria-label="Aviso sanitario">
-        <p class="eyebrow">Aviso</p>
-        <p>
-          Esta página tiene fines informativos y <strong>no sustituye la
-          valoración de profesionales sanitarios.</strong>
-        </p>
-      </aside>
-    </section>
-
+    <p class="bulletin-intro">Investigación, educación y recursos para familias.</p>
     <section class="featured-section" aria-labelledby="destacada">
-      <div class="section-row">
-        <h2 id="destacada">Novedad destacada</h2>
-        <p>Esta semana</p>
-      </div>
-
+      <p class="eyebrow" id="destacada">Novedad destacada</p>
       <article class="featured-card">
         <div class="featured-main">
           <div class="item-meta">
             <span class="category-pill"><span aria-hidden="true"></span>{featured.data.category}</span>
             <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date)}</time>
-            <span>{featured.data.sourceType}</span>
           </div>
-          <h3>{featured.data.title}</h3>
+          <h1>{featured.data.title}</h1>
           <p>{featured.data.excerpt}</p>
-          <p class="caution-line">
-            <span aria-hidden="true"></span>
-            Conviene leerlo con valoración individual y contexto clínico.
+          <p class="health-note">
+            Esta información no sustituye la valoración de profesionales sanitarios.
           </p>
           <div class="featured-actions">
             <a class="primary-action" href={`${base}posts/${featured.slug}/`}>Leer ficha completa</a>
@@ -204,23 +179,9 @@ const formatDate = (date: Date) =>
     </section>
   </main>
 
-  <footer id="proyecto" class="site-footer">
-    <div class="footer-brand">
-      <span class="brand-mark" aria-hidden="true">N</span>
-      <div>
-        <strong>Novedades sobre el Síndrome de Tourette</strong>
-        <p>
-          Prototipo personal de boletín informativo en el entorno de
-          <a href="https://touretteasturias.org/">APASTTA</a>, Asociación del
-          Principado de Asturias del Síndrome de Tourette y Trastornos Asociados.
-        </p>
-      </div>
-    </div>
-    <nav aria-label="Enlaces del pie">
-      <p class="eyebrow">Enlaces</p>
-      <a href={base}>Inicio</a>
-      <a href="#fichas">Fichas</a>
-      <a href="#fuentes">Fuentes</a>
+  <footer class="site-footer">
+    <nav aria-label="Secciones de APASTTA en el pie">
+      <EnlacesApastta />
     </nav>
     <div>
       <p class="eyebrow">Aviso</p>

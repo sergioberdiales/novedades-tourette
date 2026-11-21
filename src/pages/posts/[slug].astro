@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import EnlacesApastta from "../../components/EnlacesApastta.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -104,18 +105,8 @@ const formatDate = (date: Date) =>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand">
-      <span class="brand-mark" aria-hidden="true">N</span>
-      <div>
-        <strong>Novedades sobre el Síndrome de Tourette</strong>
-        <p>Prototipo personal de boletín informativo en el entorno de APASTTA.</p>
-      </div>
-    </div>
-    <nav aria-label="Enlaces del pie">
-      <p class="eyebrow">Enlaces</p>
-      <a href={base}>Inicio</a>
-      <a href={`${base}#fichas`}>Fichas</a>
-      <a href={`${base}#fuentes`}>Fuentes</a>
+    <nav aria-label="Secciones de APASTTA en el pie">
+      <EnlacesApastta />
     </nav>
     <div>
       <p class="eyebrow">Aviso</p>
