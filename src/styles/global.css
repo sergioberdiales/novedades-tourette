@@ -1,5 +1,8 @@
 :root {
   color-scheme: light;
+  --layout-width: 1120px;
+  --gutter: clamp(16px, 2vw, 24px);
+  --reading-width: 72ch;
   --bg: #eaf1f8;
   --panel: #f6f9fc;
   --paper: #ffffff;
@@ -138,7 +141,7 @@ svg {
 .home-main,
 .site-footer,
 .post-page {
-  width: min(100% - 3rem, 1500px);
+  width: min(calc(100% - 2 * var(--gutter)), var(--layout-width));
   margin-inline: auto;
 }
 
@@ -202,7 +205,7 @@ svg {
 }
 
 .featured-main p {
-  max-width: 900px;
+  max-width: var(--reading-width);
   margin: 0;
   color: var(--muted-strong);
   font-size: 1.25rem;
@@ -583,10 +586,6 @@ select {
   font-size: 0.95rem;
 }
 
-.post-page {
-  max-width: 1040px;
-}
-
 .post-detail {
   padding: 3.4rem 0 4.5rem;
 }
@@ -606,7 +605,7 @@ select {
 }
 
 .lead {
-  max-width: 840px;
+  max-width: var(--reading-width);
   margin: 1rem 0 0;
   color: var(--muted-strong);
   font-size: 1.28rem;
@@ -653,6 +652,12 @@ dd a {
 .metadata-section h2 {
   margin-bottom: 0.8rem;
   font-size: 1.75rem;
+}
+
+.content-section p,
+.content-section ul,
+.content-section ol {
+  max-width: var(--reading-width);
 }
 
 .content-section p,
@@ -707,12 +712,6 @@ dd a {
 }
 
 @media (max-width: 860px) {
-  .home-main,
-  .site-footer,
-  .post-page {
-    width: min(100% - 2rem, 1500px);
-  }
-
   .featured-card,
   .method-section,
   .site-footer {
